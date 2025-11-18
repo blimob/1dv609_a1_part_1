@@ -35,9 +35,15 @@ describe('Password class, test suite', () => {
         
     })
 
-    test('reurn password hash', () => {
+    test('return if password is not the same', () => {
+        const newPassword = new Password('1234567890123')
+        const actual = password.isPasswordSame(newPassword)
+        expect(actual).toBeFalsy()
+    })
+
+    test('password to short', () => {
         expect(() => {
-            new Password(getPasswordHash)
-        }).toBe('password hashed')
+            new Password('test12')
+        }).toThrow('Too short password')
     })
 });
