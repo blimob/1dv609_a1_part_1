@@ -5,13 +5,13 @@
 // import { Password } from '../src/BugDoesNotTrim'
 // import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
-// import { Password } from '../src/BugMissingPasswordCheck'
+ import { Password } from '../src/BugMissingPasswordCheck'
 // import { Password } from '../src/BugNeverContainsNumbers'
 // import { Password } from '../src/BugToShortPassword'
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
- import { Password } from '../src/Correct'
+// import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
@@ -39,6 +39,10 @@ describe('Password class, test suite', () => {
         const password1 = new Password('password1234')
         const password2 = new Password('asdfghjkl1234')
         expect(password1.isPasswordSame(password2)).toBeFalsy()
+    })
+
+    test('Bug:Missing number check', () => {
+        expect(() => new Password('passwordHejhej')).toThrow('No number found')
     })
 
     // test('return if password is same or not', () => {
