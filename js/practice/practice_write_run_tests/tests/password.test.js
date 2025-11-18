@@ -41,6 +41,12 @@ describe('Password class, test suite', () => {
         expect(actual).toBeFalsy()
     })
 
+    test('return if password is the same', () => {
+        const newPassword = new Password('1234567890123')
+        const actual = password.isPasswordSame(newPassword)
+        expect(actual).toBeTruthy()
+    })
+
     test('password to short', () => {
         expect(() => {
             new Password('test12')
