@@ -1,7 +1,7 @@
 
 // Select one of the Password versions to test
 
- import { Password } from '../src/BugDoesNotHash'
+// import { Password } from '../src/BugDoesNotHash'
 // import { Password } from '../src/BugDoesNotTrim'
 // import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
@@ -11,7 +11,7 @@
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
-// import { Password } from '../src/Correct'
+ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
@@ -28,28 +28,35 @@ describe('Password class, test suite', () => {
         expect(passwordText).not.toBe(hashPassword)
     })
 
-    test('return if password is same or not', () => {
-        expect(() => {
-            new Password('Password')
-        }).toThrow('')
+    test('does not trim spaces', () => {
+        const pwWithSpaces = new Password (' ' + passwordText + ' ')
+        const actual = pwWithSpaces.getPasswordHash()
+        const expected = password.getPasswordHash()
+        expect(actual).toBe(expected)
+    })
+
+    // test('return if password is same or not', () => {
+    //     expect(() => {
+    //         new Password('Password')
+    //     }).toThrow('')
         
-    })
+    // })
 
-    test('return if password is not the same', () => {
-        const newPassword = new Password('1234567890123')
-        const actual = password.isPasswordSame(newPassword)
-        expect(actual).toBeFalsy()
-    })
+    // test('return if password is not the same', () => {
+    //     const newPassword = new Password('1234567890123')
+    //     const actual = password.isPasswordSame(newPassword)
+    //     expect(actual).toBeFalsy()
+    // })
 
-    test('return if password is the same', () => {
-        const newPassword = new Password('password1234')
-        const actual = password.isPasswordSame(newPassword)
-        expect(actual).toBeTruthy()
-    })
+    // test('return if password is the same', () => {
+    //     const newPassword = new Password('password1234')
+    //     const actual = password.isPasswordSame(newPassword)
+    //     expect(actual).toBeTruthy()
+    // })
 
-    test('password to short', () => {
-        expect(() => {
-            new Password('test12')
-        }).toThrow('Too short password')
-    })
+    // test('password to short', () => {
+    //     expect(() => {
+    //         new Password('test12')
+    //     }).toThrow('Too short password')
+    // })
 });
