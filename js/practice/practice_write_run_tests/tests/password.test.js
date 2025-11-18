@@ -34,4 +34,10 @@ describe('Password class, test suite', () => {
         }).toThrow('')
         
     })
+
+    test('reurn password hash', () => {
+        expect(() => {
+            new Password(getPasswordHash)
+        }).toBe('password hashed')
+    })
 });
