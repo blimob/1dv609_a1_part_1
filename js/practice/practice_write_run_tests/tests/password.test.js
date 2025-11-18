@@ -1,7 +1,7 @@
 
 // Select one of the Password versions to test
 
-import { Password } from '../src/BugDoesNotHash'
+ import { Password } from '../src/BugDoesNotHash'
 // import { Password } from '../src/BugDoesNotTrim'
 // import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
@@ -21,11 +21,11 @@ describe('Password class, test suite', () => {
 
     test('replace this test with one of your own and add more', () => {
         expect(true).toBe(true);
-    });
+    })
 
     test('return not hashed password', () => {
-        const actual = password.getPasswordHash()
-        expect(actual).toBe(passwordText)
+        const hashPassword = password.getPasswordHash()
+        expect(passwordText).not.toBe(hashPassword)
     })
 
     test('return if password is same or not', () => {
