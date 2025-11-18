@@ -28,5 +28,10 @@ describe('Password class, test suite', () => {
         expect(actual).toBe(passwordText)
     })
 
-    test('')
+    test('return if password is same or not', () => {
+        expect(() => {
+            new Password('Password')
+        }).toThrow('')
+        
+    })
 });
