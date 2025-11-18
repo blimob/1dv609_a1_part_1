@@ -21,5 +21,5 @@ describe('Password class, test suite', () => {
         expect(true).toBe(true);
     });
 
-    //Add your tests here
+    
 });
