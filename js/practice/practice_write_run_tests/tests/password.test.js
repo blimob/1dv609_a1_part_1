@@ -42,7 +42,7 @@ describe('Password class, test suite', () => {
     })
 
     test('return if password is the same', () => {
-        const newPassword = new Password('1234567890123')
+        const newPassword = new Password('password1234')
         const actual = password.isPasswordSame(newPassword)
         expect(actual).toBeTruthy()
     })
