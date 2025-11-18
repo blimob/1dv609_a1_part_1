@@ -16,10 +16,17 @@ import { Password } from '../src/BugDoesNotHash'
 describe('Password class, test suite', () => {
     //put constants here to increase readability
     const emptyPassword = '';
+    const passwordText = 'password1234'
+    const password = new Password (passwordText)
 
     test('replace this test with one of your own and add more', () => {
         expect(true).toBe(true);
     });
 
-    
+    test('return not hashed password', () => {
+        const actual = password.getPasswordHash()
+        expect(actual).toBe(passwordText)
+    })
+
+    test('')
 });
