@@ -5,7 +5,7 @@ class Password {
     const trimmedPW = pw.trim() // Ta bort mellanslag i början och slutet
 
     if (this.#isTooShort(trimmedPW)) {
-      throw new Error('Wrong message')
+      throw new Error('Too short password')
     }
 
     if (!this.#containsNumber(trimmedPW)) {
@@ -28,7 +28,7 @@ class Password {
   }
 
   #containsNumber(text) {
-    return /\d./.test(text) // wrong char
+    return /\d/.test(text)
   }
 
   getPasswordHash() {
