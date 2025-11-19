@@ -63,18 +63,7 @@ describe('Password class, test suite', () => {
         expect(hash).toBe(password.getPasswordHash())
     })
 
-    // test('return if password is same or not', () => {
-    //     expect(() => {
-    //         new Password('Password')
-    //     }).toThrow('')
-        
-    // })
-
-    // test('return if password is not the same', () => {
-    //     const newPassword = new Password('1234567890123')
-    //     const actual = password.isPasswordSame(newPassword)
-    //     expect(actual).toBeFalsy()
-    // })
-
-
-});
+    test('Bug:WrongMessage', () => {
+       expect(() => new Password('password').toBe('Too short password'))
+    })
+})
