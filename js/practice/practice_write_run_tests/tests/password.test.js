@@ -45,6 +45,11 @@ describe('Password class, test suite', () => {
         expect(() => new Password('passwordHejhej')).toThrow('No number found')
     })
 
+    test('Bug:Missing password check', () => {
+        expect(() => new Password ('hej123')) 
+        .toThrow('Too short password')
+    })
+
     // test('return if password is same or not', () => {
     //     expect(() => {
     //         new Password('Password')
