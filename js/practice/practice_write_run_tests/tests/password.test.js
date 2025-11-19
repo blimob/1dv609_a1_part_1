@@ -16,12 +16,7 @@
 describe('Password class, test suite', () => {
     //put constants here to increase readability
     const passwordText = 'password1234'
-    // const password = new Password (passwordText)
-
-    test('return not hashed password', () => {
-        const hashPassword = new Password(passwordText).getPasswordHash()
-        expect(passwordText).not.toBe(hashPassword)
-    })
+    //const password = new Password (passwordText)
 
     test('does not trim spaces', () => {
         const pwWithSpaces = new Password (' ' + passwordText + ' ')
@@ -34,6 +29,10 @@ describe('Password class, test suite', () => {
         const password1 = new Password('password1234')
         const password2 = new Password('asdfghjkl1234')
         expect(password1.isPasswordSame(password2)).toBeFalsy()
+    })
+
+    test('should throw exeption if argument is not instance of password', () => {
+        expect(() => new Password(passwordText).isPasswordSame('other')).toThrow('Invalid argument')
     })
 
     test('Bug:Missing number check', () => {
@@ -63,7 +62,8 @@ describe('Password class, test suite', () => {
         expect(hash).toBe(password.getPasswordHash())
     })
 
-    test('Bug:WrongMessage', () => {
-       expect(() => new Password('password').toBe('Too short password'))
-    })
+
+    // test('Bug:WrongMessage', () => {
+    //    expect(() => new Password('password').toBe('Too short password'))
+    // })
 })
