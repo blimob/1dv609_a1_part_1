@@ -5,34 +5,29 @@
 // import { Password } from '../src/BugDoesNotTrim'
 // import { Password } from '../src/BugisPasswordAlwaysSame'
 // import { Password } from '../src/BugMissingNumberCheck'
- import { Password } from '../src/BugMissingPasswordCheck'
+// import { Password } from '../src/BugMissingPasswordCheck'
 // import { Password } from '../src/BugNeverContainsNumbers'
 // import { Password } from '../src/BugToShortPassword'
 // import { Password } from '../src/BugVeryShort'
 // import { Password } from '../src/BugWrongHashingAlgorithm'
 // import { Password } from '../src/BugWrongMessage'
-// import { Password } from '../src/Correct'
+ import { Password } from '../src/Correct'
 
 describe('Password class, test suite', () => {
     //put constants here to increase readability
-    const emptyPassword = '';
     const passwordText = 'password1234'
-    const password = new Password (passwordText)
-
-    test('replace this test with one of your own and add more', () => {
-        expect(true).toBe(true);
-    })
+    // const password = new Password (passwordText)
 
     test('return not hashed password', () => {
-        const hashPassword = password.getPasswordHash()
+        const hashPassword = new Password(passwordText).getPasswordHash()
         expect(passwordText).not.toBe(hashPassword)
     })
 
     test('does not trim spaces', () => {
         const pwWithSpaces = new Password (' ' + passwordText + ' ')
         const actual = pwWithSpaces.getPasswordHash()
-        const expected = password.getPasswordHash()
-        expect(actual).toBe(expected)
+        const expectedValue = new Password(passwordText).getPasswordHash()
+        expect(actual).toBe(expectedValue)
     })
 
     test('does not treat different passwords as the same', () => {
@@ -50,6 +45,24 @@ describe('Password class, test suite', () => {
         .toThrow('Too short password')
     })
 
+    test('Bug:missing test text', () => {
+        expect(() => new Password ('hejhejhej123')).not.toThrow('No number found')
+    })
+
+    test('password to short and very short', () => {
+        expect(() => new Password('hejhejhejh1')).toThrow('Too short password')
+        expect(() => new Password('hej2j1')).toThrow('Too short password')
+    })
+
+    test('Bug in hash-algortim', () => {
+        const password = new Password(passwordText)
+        let hash = 7
+        for (let i = 0; i < passwordText.length; i++) {
+            hash = hash * 31 + passwordText.charCodeAt(i)
+        }
+        expect(hash).toBe(password.getPasswordHash())
+    })
+
     // test('return if password is same or not', () => {
     //     expect(() => {
     //         new Password('Password')
@@ -64,9 +77,4 @@ describe('Password class, test suite', () => {
     // })
 
 
-    // test('password to short', () => {
-    //     expect(() => {
-    //         new Password('test12')
-    //     }).toThrow('Too short password')
-    // })
 });
