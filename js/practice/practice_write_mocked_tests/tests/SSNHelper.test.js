@@ -1,7 +1,7 @@
 // import { SSNHelper } from '../src/correct/SSNHelper'; 
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper  } from '../src/bugs/BuggySSNHelperAllowMonth0'
-import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 
 describe('SSNHelpe Tests', () => {
 
@@ -13,5 +13,11 @@ describe('SSNHelpe Tests', () => {
     test('isValidMonth return false for lower boundary 0', () => {
         const helper = new SSNHelper()
         expect(helper.isValidMonth('0')).toBeFalsy()
+    })
+
+    test('isCorrectFormat returns false when dash is missing', () => {
+        const helper = new SSNHelper()
+        const actual = helper.isCorrectFormat('9009212334')
+        expect(actual).toBeFalsy()
     })
 });
