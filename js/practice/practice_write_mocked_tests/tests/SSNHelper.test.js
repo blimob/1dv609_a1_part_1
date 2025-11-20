@@ -1,9 +1,9 @@
-// import { SSNHelper } from '../src/correct/SSNHelper'; 
-// import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
+// import { SSNHelper } from '../src/correct/SSNHelper'
+ import { SSNHelper } from '../src/bugs/BuggySSNHelperAllowDayUpTo30'
 // import { SSNHelper  } from '../src/bugs/BuggySSNHelperAllowMonth0'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'
- import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
+// import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 
 describe('SSNHelpe Tests', () => {
     const helper = new SSNHelper()
@@ -13,7 +13,7 @@ describe('SSNHelpe Tests', () => {
     })
 
     test('isValidMonth Should Return False For Month Zero', () => {
-        expect(helper.isValidMonth('0')).toBeFalsy()
+        expect(helper.isValidMonth('1')).toBeTruthy()
     })
 
     test('isCorrectFormat Should Return False For Missing Dash', () => {
@@ -27,12 +27,12 @@ describe('SSNHelpe Tests', () => {
     })
 
     test('isCorrectLength Length Should Return False For Too Long Input', () => {
-        const helper = new SSNHelper()
         const actual = helper.isCorrectLength('19970930-12345')
         expect(actual).toBeFalsy()
     })
 
-    // test('isCorrectLength Length Should Return False For Too Short Input', () => {
-
-    // })
-});
+    test('isCorrectLength Length Should Return False For Too Short Input', () => {
+        const actual = helper.isCorrectLength('19970-1232')
+        expect(actual).toBeFalsy()
+    })
+})

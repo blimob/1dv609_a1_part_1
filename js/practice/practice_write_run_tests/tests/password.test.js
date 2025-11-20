@@ -19,48 +19,48 @@ describe('Password class, test suite', () => {
     const passwordText = 'password1234'
     //const password = new Password (passwordText)
 
-    test('does not trim spaces', () => {
-        const pwWithSpaces = new Password (' ' + passwordText + ' ')
+    test('getPassword Hash Should Trim Spaces For Hashed Comparison', () => {
+        const pwWithSpaces = new Password(' ' + passwordText + ' ')
         const actual = pwWithSpaces.getPasswordHash()
         const expectedValue = new Password(passwordText).getPasswordHash()
         expect(actual).toBe(expectedValue)
     })
-
-    test('does not treat different passwords as the same', () => {
+    
+    test('isPassword Same Should Return False For Different Passwords', () => {
         const password1 = new Password('password1234')
         const password2 = new Password('asdfghjkl1234')
         expect(password1.isPasswordSame(password2)).toBeFalsy()
     })
-
-    test('should throw exeption if argument is not instance of password', () => {
-        expect(() => new Password(passwordText).isPasswordSame('other')).toThrow('Invalid argument')
+    
+    test('isPassword Same Should Throw For Non Password Argument', () => {
+        expect(() => new Password(passwordText).isPasswordSame('other'))
+            .toThrow('Invalid argument')
     })
-
-    test('Bug:Missing number check', () => {
+    
+    test('constructor Should Throw For Missing Number', () => {
         expect(() => new Password('passwordHejhej')).toThrow('No number found')
     })
-
-    test('Bug:Missing password check', () => {
-        expect(() => new Password ('hej123')) 
-        .toThrow('Too short password')
+    
+    test('constructor Should Throw For Too Short Password', () => {
+        expect(() => new Password('hej123')).toThrow('Too short password')
     })
-
-    test('Bug:missing test text', () => {
-        expect(() => new Password ('hejhejhej123')).not.toThrow('No number found')
+    
+    test('constructor Should Not Throw When Number Exists', () => {
+        expect(() => new Password('hejhejhej123')).not.toThrow('No number found')
     })
-
-    test('password to short and very short', () => {
+    
+    test('constructor Should Throw For Too Short And Very Short Passwords', () => {
         expect(() => new Password('hejhejhejh1')).toThrow('Too short password')
         expect(() => new Password('hej2j1')).toThrow('Too short password')
     })
-
-    test('Bug in hash-algortim', () => {
+    
+    test('getPassword Hash Should Match Calculated Hash For Correct Algorithm', () => {
         const password = new Password(passwordText)
         let hash = 7
         for (let i = 0; i < passwordText.length; i++) {
             hash = hash * 31 + passwordText.charCodeAt(i)
         }
-        expect(hash).toBe(password.getPasswordHash())
+        expect(password.getPasswordHash()).toBe(hash)
     })
 
 
