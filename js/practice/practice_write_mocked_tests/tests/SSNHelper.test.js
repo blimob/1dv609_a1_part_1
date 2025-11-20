@@ -4,19 +4,17 @@
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperIncorrectFormat'
 
 describe('SSNHelpe Tests', () => {
+    const helper = new SSNHelper()
 
-    test('isValidDay returns true for upper boundary 31', () => {
-        const helper = new SSNHelper()
+    test('isValidDay Should Return True For Boundary 31', () => {
         expect(helper.isValidDay('31')).toBe(true)
     })
 
-    test('isValidMonth return false for lower boundary 0', () => {
-        const helper = new SSNHelper()
+    test('isValidMonth Should Return False For Month Zero', () => {
         expect(helper.isValidMonth('0')).toBeFalsy()
     })
 
-    test('isCorrectFormat returns false when dash is missing', () => {
-        const helper = new SSNHelper()
+    test(' isCorrectFormat Should Return False For Missing Dash', () => {
         const actual = helper.isCorrectFormat('9009212334')
         expect(actual).toBeFalsy()
     })
