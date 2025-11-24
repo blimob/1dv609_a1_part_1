@@ -1,6 +1,6 @@
-import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+//import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 import { jest } from '@jest/globals'
-//import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck';
+import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck';
 
 //NOTE THESE TESTS SHOULD NOT BE DEPENDENT ON SSNHelper BUT USE MOCKING
 describe('SwedishSocialSecurityNumber Tests', () => {
@@ -14,9 +14,9 @@ describe('SwedishSocialSecurityNumber Tests', () => {
 
     test('Constructor Should Throw For Incorrect Length', () => {
         helper.isCorrectLength.mockReturnValue(false)
-
         expect(() =>
-        new SwedishSocialSecurityNumber('970821-1234', helper)
+        new SwedishSocialSecurityNumber('9701-1234', helper)
     ).toThrow()
     })
 });
+
