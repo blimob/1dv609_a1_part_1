@@ -7,20 +7,28 @@ import { expect, jest } from '@jest/globals'
 
 //NOTE THESE TESTS SHOULD NOT BE DEPENDENT ON SSNHelper BUT USE MOCKING
 describe('SwedishSocialSecurityNumber Tests', () => {
-    const helper = {
-        isCorrectLength: jest.fn(),
-        isValidMonth: jest.fn(),
-        isValidDay: jest.fn(),
-        isCorrectFormat: jest.fn(),
-        luhnisCorrect: jest.fn()
-    }
-    const newSecurityNr = ('990824-3684')
+    beforeEach(() => {
+        helper = {
+            isCorrectLength: jest.fn().mockReturnValue(true),
+            isValidMonth: jest.fn().mockReturnValue(true),
+            isValidDay: jest.fn().mockReturnValue(true),
+            isCorrectFormat: jest.fn().mockReturnValue(true),
+            luhnisCorrect: jest.fn().mockReturnValue(true)
+        }
+    })
+    // const newSecurityNr = ('990824-3684')
 
     test('Constructor Should Throw For Incorrect Length', () => {
         helper.isCorrectLength.mockReturnValue(false)
         expect(() =>
         new SwedishSocialSecurityNumber('9701-1234', helper)
     ).toThrow()
+    })
+
+    test('Constructor Should Throw For Incorrect Format',() => {
+        helper.isCorrectFormat.mockReturnValue(false)
+        expect(() =>
+        new SwedishSocialSecurityNumber('199507262500', helper)).toThrow()
     })
 
     test('constructor Should TrimSpaces ForInputWithLeadingAndTrailingSpaces', () => {
@@ -40,6 +48,13 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         helper.luhnisCorrect.mockReturnValue(true)
         const validYear = new SwedishSocialSecurityNumber('950726-2500', helper).getYear()
         expect(validYear).toBe('95')
-
      })
-});
+
+     test('getSerialNumber Should Return Correct Number', () => {
+        helper.luhnisCorrect.mockReturnValue(true)
+        const validSerialNumber = new SwedishSocialSecurityNumber('950726-2500', helper).getSerialNumber()
+        expect(validSerialNumber).toBe('2500')
+     })
+
+
+})
