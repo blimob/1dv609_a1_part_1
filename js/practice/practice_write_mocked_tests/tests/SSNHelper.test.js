@@ -5,7 +5,7 @@
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperMessyLuhn'
 // import { SSNHelper } from '../src/bugs/BuggySSNHelperWrongLength'
 
-describe('SSNHelpe Tests', () => {
+describe('SSNHelper Tests', () => {
     const helper = new SSNHelper()
 
     test('isValidDay Should Return True For Boundary 31', () => {

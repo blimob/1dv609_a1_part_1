@@ -1,6 +1,6 @@
-import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
+//import { SwedishSocialSecurityNumber } from '../src/correct/SwedishSocialSecurityNumber'
 import { expect, jest } from '@jest/globals'
-//import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
+import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoLenCheck'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecurityNumberNoTrim'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberNoLuhn'
 //import { SwedishSocialSecurityNumber } from '../src/bugs/BuggySwedishSocialSecutityNumberWrongYear'
@@ -37,7 +37,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         new SwedishSocialSecurityNumber('972322-1122', helper)).toThrow()
     })
 
-    test('Constructor Should Throw Incorrect Day', () => {
+    test('Constructor Should Throw For Incorrect Day', () => {
         helper.isValidDay.mockReturnValue(false)
         expect(() => new SwedishSocialSecurityNumber('19990734-1122', helper)).toThrow()
     })
