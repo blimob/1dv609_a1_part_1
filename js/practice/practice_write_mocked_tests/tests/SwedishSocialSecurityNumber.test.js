@@ -31,6 +31,17 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         new SwedishSocialSecurityNumber('199507262500', helper)).toThrow()
     })
 
+    test('Constructor Should Throw For Incorrect Month', () => {
+        helper.isValidMonth.mockReturnValue(false)
+        expect(() => 
+        new SwedishSocialSecurityNumber('972322-1122', helper)).toThrow()
+    })
+
+    test('Constructor Should Throw Incorrect Day', () => {
+        helper.isValidDay.mockReturnValue(false)
+        expect(() => new SwedishSocialSecurityNumber('19990734-1122', helper)).toThrow()
+    })
+
     test('constructor Should TrimSpaces ForInputWithLeadingAndTrailingSpaces', () => {
         helper.isCorrectLength.mockReturnValue(true)
         new SwedishSocialSecurityNumber(' 990824-3684 ', helper)
