@@ -63,8 +63,8 @@ describe('Password class, test suite', () => {
         expect(password.getPasswordHash()).toBe(hash)
     })
 
-
     // test('Bug:WrongMessage', () => {
     //    expect(() => new Password('password').toBe('Too short password'))
     // })
+
 })

@@ -3,9 +3,9 @@ Create a table like this one for all the bugs and Tests, showing which test fail
 
 ### Table for checking test suite bug coverage (Password)
 
-| SUT       | Test Name | Correct | BugDoesNotHash | BugDoesNotTrim | BugisPasswordAlwaysSame | BugMissingNumberCheck | BugMissingPasswordCheck | BugNeverContainsNumbers | BugToShortPassword | BugVeryShort | BugWrongHashingAlgorithm | BugWrongMessage | MyBug |
+| SUT | Test Name | Correct | BugDoesNotHash | BugDoesNotTrim | BugisPasswordAlwaysSame | BugMissingNumberCheck | BugMissingPasswordCheck | BugNeverContainsNumbers | BugToShortPassword | BugVeryShort | BugWrongHashingAlgorithm | BugWrongMessage | MyBug |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| Password |getPasswordHashShouldTrimSpacesForHashedComparison | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Password | getPasswordHashShouldTrimSpacesForHashedComparison | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Password | isPasswordSameShouldReturnFalseForDifferentPasswords | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Password | isPasswordSameShouldThrowForNonPasswordArgument | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Password | constructorShouldThrowForMissingNumber | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
