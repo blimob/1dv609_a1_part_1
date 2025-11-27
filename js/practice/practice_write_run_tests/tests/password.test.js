@@ -19,20 +19,20 @@ describe('Password class, test suite', () => {
     const passwordText = 'password1234'
     //const password = new Password (passwordText)
 
-    test('getPassword Hash Should Trim Spaces For Hashed Comparison', () => {
+    test('getPasswordHash Should Trim Spaces For Hashed Comparison', () => {
         const pwWithSpaces = new Password(' ' + passwordText + ' ')
         const actual = pwWithSpaces.getPasswordHash()
         const expectedValue = new Password(passwordText).getPasswordHash()
         expect(actual).toBe(expectedValue)
     })
     
-    test('isPassword Same Should Return False For Different Passwords', () => {
+    test('isPasswordSame Should Return False For Different Passwords', () => {
         const password1 = new Password('password1234')
         const password2 = new Password('asdfghjkl1234')
         expect(password1.isPasswordSame(password2)).toBeFalsy()
     })
     
-    test('isPassword Same Should Throw For Non Password Argument', () => {
+    test('isPasswordSame Should Throw For Non Password Argument', () => {
         expect(() => new Password(passwordText).isPasswordSame('other'))
             .toThrow('Invalid argument')
     })
@@ -54,7 +54,7 @@ describe('Password class, test suite', () => {
         expect(() => new Password('hej2j1')).toThrow('Too short password')
     })
     
-    test('getPassword Hash Should Match Calculated Hash For Correct Algorithm', () => {
+    test('getPasswordHash Should Match Calculated Hash For Correct Algorithm', () => {
         const password = new Password(passwordText)
         let hash = 7
         for (let i = 0; i < passwordText.length; i++) {

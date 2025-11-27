@@ -28,7 +28,7 @@ class Password {
   }
 
   #containsNumber(text) {
-    return /\d/.test(text)
+    return /\.d/.test(text) //bug
   }
 
   getPasswordHash() {

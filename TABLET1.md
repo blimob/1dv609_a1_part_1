@@ -6,11 +6,11 @@ Create a table like this one for all the bugs and Tests, showing which test fail
 | SUT | Test Name | Correct | BugDoesNotHash | BugDoesNotTrim | BugisPasswordAlwaysSame | BugMissingNumberCheck | BugMissingPasswordCheck | BugNeverContainsNumbers | BugToShortPassword | BugVeryShort | BugWrongHashingAlgorithm | BugWrongMessage | MyBug |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Password | getPasswordHashShouldTrimSpacesForHashedComparison | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
-| Password | isPasswordSameShouldReturnFalseForDifferentPasswords | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| Password | isPasswordSameShouldThrowForNonPasswordArgument | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Password | isPasswordSameShouldReturnFalseForDifferentPasswords | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
+| Password | isPasswordSameShouldThrowForNonPasswordArgument | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Password | constructorShouldThrowForMissingNumber | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | Password | constructorShouldThrowForTooShortPassword | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ |
-| Password | constructorShouldNotThrowWhenNumberExists | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Password | constructorShouldNotThrowWhenNumberExists | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ |
 | Password | constructorShouldThrowForTooShortAndVeryShortPasswords | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ |
-| Password | getPasswordHashShouldMatchCalculatedHashForCorrectAlgorithm | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| Password | getPasswordHashShouldMatchCalculatedHashForCorrectAlgorithm | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ |
 | Coverage |100%| 100% | 100%  | 100% | 93.33 | 93.33% | 41.17% | 100% | 94.11% | 100% | 100% | 100% | 100% | 
