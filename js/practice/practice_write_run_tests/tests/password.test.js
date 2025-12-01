@@ -54,6 +54,7 @@ describe('Password class, test suite', () => {
         expect(() => new Password('hej2j1')).toThrow('Too short password')
     })
     
+
     test('getPasswordHash Should Match Calculated Hash For Correct Algorithm', () => {
         const password = new Password(passwordText)
         let hash = 7
