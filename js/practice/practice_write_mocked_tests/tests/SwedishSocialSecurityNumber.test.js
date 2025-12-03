@@ -23,6 +23,7 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         expect(() =>
         new SwedishSocialSecurityNumber('9701-1234', helper)
     ).toThrow()
+    expect(helper.isCorrectLength).toHaveBeenCalledWith('9701-1234')
     })
 
     test('Constructor Should Throw For Incorrect Format',() => {
@@ -65,6 +66,14 @@ describe('SwedishSocialSecurityNumber Tests', () => {
         helper.luhnisCorrect.mockReturnValue(true)
         const validSerialNumber = new SwedishSocialSecurityNumber('950726-2500', helper).getSerialNumber()
         expect(validSerialNumber).toBe('2500')
+     })
+
+     test('Constructor Should Call luhnisCorrect', () => {
+        helper.luhnisCorrect.mockReturnValue(true)
+
+        new SwedishSocialSecurityNumber('950726-2500', helper)
+
+        expect(helper.luhnisCorrect).toHaveBeenCalledWith('950726-2500')
      })
 
 
